@@ -1,6 +1,7 @@
 # rec-server-setup
 
 [![CI](https://github.com/enprocode/rec-server-setup/actions/workflows/ci.yml/badge.svg)](https://github.com/enprocode/rec-server-setup/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/enprocode/rec-server-setup/actions/workflows/codeql.yml/badge.svg)](https://github.com/enprocode/rec-server-setup/actions/workflows/codeql.yml)
 [![Release](https://img.shields.io/github/v/release/enprocode/rec-server-setup)](https://github.com/enprocode/rec-server-setup/releases)
 [![License: MIT](https://img.shields.io/github/license/enprocode/rec-server-setup)](LICENSE)
 
