@@ -1,4 +1,8 @@
-# rec-server
+# rec-server-setup
+
+[![CI](https://github.com/enprocode/rec-server-setup/actions/workflows/ci.yml/badge.svg)](https://github.com/enprocode/rec-server-setup/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/enprocode/rec-server-setup)](https://github.com/enprocode/rec-server-setup/releases)
+[![License: MIT](https://img.shields.io/github/license/enprocode/rec-server-setup)](LICENSE)
 
 録画サーバー(TV録画サーバー)を構築するためのスクリプト・設定を1つに集約したリポジトリです。
 チューナードライバのインストールから Mirakurun / mirakc + EPGStation の構築まで、複数の方式をまとめて管理します。
