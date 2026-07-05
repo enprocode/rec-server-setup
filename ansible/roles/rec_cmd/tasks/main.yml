@@ -1,0 +1,18 @@
+- name: make dir
+  become: true
+  file:
+    path: ~/git
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
+# 集約済みの drivers/shell 配下のスクリプトを直接実行する
+# (ドライバのソースは各スクリプト内で上流から clone される)
+- name: install script
+  become: true
+  shell: |
+    bash px4_drv-install.sh
+    bash recpt1-install.sh
+  args:
+    chdir: "{{ playbook_dir }}/../drivers/shell"

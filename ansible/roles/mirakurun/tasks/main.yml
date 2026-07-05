@@ -1,0 +1,51 @@
+- name: arib-b25-stream-test install
+  become: true
+  npm:
+    name: arib-b25-stream-test
+    global: true
+    unsafe_perm: true
+
+- name: pm2 install
+  become: true
+  npm:
+    name: pm2
+    global: true
+
+- name: mirakurun install
+  become: true
+  npm:
+    name: mirakurun@3.8.1
+    global: true
+    production: true
+
+- name: mirakurun init
+  become: true
+  command: mirakurun init
+
+# 集約済みの native-install/ を配置する (旧リポジトリの clone は不要)
+# epgstation ロールが参照する conf/ ・ bin/ もここで一緒に配置される
+- name: deploy mirakurun/epgstation setup files
+  copy:
+    src: "{{ playbook_dir }}/../native-install/"
+    dest: ~/mirakurun-epgstation-install/
+
+- name: tuners
+  become: true
+  pause:
+    prompt: "Select tuners configuration yaml [1.Q3PE4 2.W3PE4 3.tuners-15ch 4.exit]"
+  register: mirakurun_tuners
+
+- name: mirakurun setup
+  become: true
+  expect:
+    command: bash mirakurun-config.sh
+    chdir: ~/mirakurun-epgstation-install/shell
+    responses:
+      (.*)Select (.*):
+        - "{{ mirakurun_tuners.user_input }}"
+        - "4"
+    echo: true
+
+- name: mirakurun restart
+  become: true
+  command: mirakurun restart

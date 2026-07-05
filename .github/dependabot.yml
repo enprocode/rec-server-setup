@@ -1,0 +1,19 @@
+version: 2
+updates:
+  # GitHub Actions (release ワークフローなどで使うアクション)
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      timezone: Asia/Tokyo
+    labels:
+      - dependencies
+
+  # mirakc イメージ用 Dockerfile のベースイメージ
+  - package-ecosystem: docker
+    directory: /docker/docker/debian
+    schedule:
+      interval: weekly
+      timezone: Asia/Tokyo
+    labels:
+      - dependencies

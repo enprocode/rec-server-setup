@@ -1,0 +1,12 @@
+# yamllint 設定: 自分たちが管理する infra YAML 向け(.github / ansible / compose)。
+# アプリ本体の設定 YAML(mirakurun/EPGStation/mirakc 等)は対象外(CI 側でパス指定)。
+extends: default
+
+rules:
+  line-length: disable
+  document-start: disable
+  truthy:
+    check-keys: false
+  comments-indentation: disable
+  comments:
+    min-spaces-from-content: 1

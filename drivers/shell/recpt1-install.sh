@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# 録画コマンド recpt1 と B25 デコードライブラリ libaribb25 をインストールする。
+# 事前に docs/drivers.md 記載の依存パッケージを導入しておくこと。
+
+echo "libaribb25 and recpt1 install start!"
+mkdir -p ~/git
+cd ~/git || exit
+git clone https://github.com/tsukumijima/libaribb25.git
+cd libaribb25/ || exit
+cmake .
+make
+sudo make install
+
+# recpt1 install
+cd ~/git || exit
+git clone https://github.com/stz2012/recpt1.git
+cd recpt1/recpt1 || exit
+./autogen.sh
+./configure --enable-b25 
+make
+sudo make install
+echo "done!"

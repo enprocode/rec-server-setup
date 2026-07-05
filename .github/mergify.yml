@@ -1,0 +1,11 @@
+# 設定ファイルのフォーマット: https://docs.mergify.com/configuration/file-format/
+# マージ後のブランチ削除は GitHub の "Automatically delete head branches" 設定に任せる
+# (Mergify の delete_head_branch アクションは非推奨のため使用しない)
+pull_request_rules:
+  - name: Dependabot の PR を自動マージ
+    conditions:
+      - author=dependabot[bot]
+      - -conflict
+    actions:
+      merge:
+        method: squash
