@@ -1,0 +1,20 @@
+- name: make dir
+  become: true
+  file:
+    path: ~/git
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
+- name: cmd file git clone
+  become: true
+  git:
+    repo: https://github.com/Junch25/rec-cmd-install.git
+    dest: ~/git/rec-cmd-install
+
+- name: install script
+  become: true
+  shell: |
+    bash ~/git/rec-cmd-install/shell/px4driver-install.sh
+    bash ~/git/rec-cmd-install/shell/recpt1-install.sh

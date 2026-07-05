@@ -1,0 +1,21 @@
+- name: remove package node.js
+  become: true
+  apt:
+    name: nodejs
+    state: absent
+    purge: true
+
+- name: add repository of node.js
+  become: true
+  shell: curl -sL https://deb.nodesource.com/setup_16.x | sudo bash -
+
+- name: apt update
+  become: true
+  apt:
+    update_cache: true
+
+- name: install latest node.js
+  become: true
+  apt:
+    force_apt_get: true
+    name: nodejs

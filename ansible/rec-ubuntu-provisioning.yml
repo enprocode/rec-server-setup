@@ -1,0 +1,11 @@
+- hosts: localhost
+  connection: local
+  become: true
+  gather_facts: false
+  roles:
+    - apt
+    - node
+    - mysql
+    - rec_cmd
+    - mirakurun
+    - epgstation

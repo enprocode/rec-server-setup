@@ -1,0 +1,54 @@
+- name: Upgrade all package
+  become: true
+  apt:
+    update_cache: true
+    upgrade: true
+
+- name: Install apt packages
+  become: true
+  apt:
+    force_apt_get: true
+    name: 
+      - vim
+      - curl
+      - git
+      - build-essential
+      - fonts-powerline
+      - tree
+      - zsh
+      - unzip
+      - cmake
+      - g++
+      - gcc
+      - make
+      - dkms
+      - autoconf
+      - automake
+      - python3
+      - pkg-config
+      - libpcsclite-dev
+      - pcscd
+      - pcsc-tools
+      - libccid
+      - ffmpeg
+      - yasm
+      - libx264-dev
+      - libmp3lame-dev
+      - libopus-dev
+      - libvpx-dev
+      - libx265-dev
+      - libnuma-dev
+      - libasound2
+      - libass9
+      - libvdpau1
+      - libva-x11-2
+      - libva-drm2
+      - libxcb-shm0
+      - libxcb-xfixes0
+      - libxcb-shape0 
+      - libvorbisenc2
+      - libtheora0
+      - libaribb24-dev
+      - python3-pip
+      - python3-dev 
+      - default-libmysqlclient-dev
