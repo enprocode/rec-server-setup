@@ -1,0 +1,7 @@
+# hadolint 設定
+# DL3008: apt のバージョン固定は本プロジェクトでは運用上不要
+# DL3003: clone したソースディレクトリへの cd を許容する
+ignored:
+  - DL3008
+  - DL3003
+failure-threshold: warning

@@ -1,0 +1,69 @@
+name: CI
+
+# PR と main への push で静的チェックを実行する。
+# 実機(チューナー)依存のため実行テストは行わず、lint/syntax 中心。
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  shellcheck:
+    name: shellcheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run shellcheck
+        run: |
+          find drivers native-install docker -name '*.sh' -print0 \
+            | xargs -0 shellcheck
+
+  yamllint:
+    name: yamllint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install yamllint
+        run: pipx install yamllint
+      - name: Run yamllint
+        run: |
+          yamllint .github ansible \
+            docker/setup/docker-compose.yml \
+            docker/docker/debian/docker-compose.yml
+
+  actionlint:
+    name: actionlint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run actionlint
+        run: |
+          bash <(curl -fsSL https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash)
+          ./actionlint -color
+
+  hadolint:
+    name: hadolint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run hadolint
+        uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: docker/docker/debian/Dockerfile
+          failure-threshold: warning
+
+  ansible-syntax:
+    name: ansible syntax-check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install ansible
+        run: pipx install ansible
+      - name: Syntax check
+        run: |
+          ansible-playbook -i ansible/hosts \
+            ansible/rec-ubuntu-provisioning.yml --syntax-check

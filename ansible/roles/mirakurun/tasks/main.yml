@@ -38,13 +38,13 @@
 - name: mirakurun setup
   become: true
   expect:
-      command: bash mirakurun-config.sh
-      chdir: ~/mirakurun-epgstation-install/shell
-      responses: 
-        (.*)Select (.*):
-          - "{{ mirakurun_tuners.user_input }}"
-          - "4"
-      echo: yes
+    command: bash mirakurun-config.sh
+    chdir: ~/mirakurun-epgstation-install/shell
+    responses:
+      (.*)Select (.*):
+        - "{{ mirakurun_tuners.user_input }}"
+        - "4"
+    echo: true
 
 - name: mirakurun restart
   become: true

@@ -8,7 +8,7 @@
   become: true
   apt:
     force_apt_get: true
-    name: 
+    name:
       - vim
       - curl
       - git
@@ -45,10 +45,10 @@
       - libva-drm2
       - libxcb-shm0
       - libxcb-xfixes0
-      - libxcb-shape0 
+      - libxcb-shape0
       - libvorbisenc2
       - libtheora0
       - libaribb24-dev
       - python3-pip
-      - python3-dev 
+      - python3-dev
       - default-libmysqlclient-dev

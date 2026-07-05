@@ -3,6 +3,8 @@
 # Function to handle script termination
 function trap_exit() {
   echo "Stopping... $(jobs -p)"
+  # 複数のジョブ PID を個別引数として渡すため、あえて分割する
+  # shellcheck disable=SC2046
   kill $(jobs -p) > /dev/null 2>&1 || echo "Already killed."
   if [ -e "/etc/init.d/pcscd" ]; then
     /etc/init.d/pcscd stop
@@ -36,9 +38,9 @@ if !(type "recpt1" > /dev/null 2>&1); then
   apt-get update
   apt-get install -y --no-install-recommends git autoconf automake
 
-  cd /tmp
+  cd /tmp || exit 1
   git clone https://github.com/stz2012/recpt1.git
-  cd recpt1/recpt1
+  cd recpt1/recpt1 || exit 1
   ./autogen.sh
   ./configure --prefix /opt
   make

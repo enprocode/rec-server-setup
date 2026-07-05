@@ -2,7 +2,7 @@
   git:
     repo: https://github.com/l3tnun/EPGStation.git
     dest: ~/EPGStation
-    
+
 - name: epgstation install and setup
   shell: |
     echo "EPGStation install and setup start!"
