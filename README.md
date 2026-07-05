@@ -57,6 +57,18 @@ bash setup.sh
 | mirakc | https://github.com/mirakc/mirakc |
 | EPGStation | https://github.com/l3tnun/EPGStation |
 
+## バージョン管理 / リリース
+- バージョンはルートの [`VERSION`](VERSION) ファイルで管理します。
+- `VERSION` を更新して `main` に push すると、[GitHub Actions](.github/workflows/release.yml) が `v<バージョン>` タグと GitHub Release(リリースノート自動生成)を作成します。
+- リリース手順: `VERSION` を書き換える → コミット → `main` へ反映。
+
+## 開発 / 自動化
+- **Dependabot** ([`.github/dependabot.yml`](.github/dependabot.yml)): GitHub Actions と mirakc 用 Dockerfile のベースイメージを毎週チェックします。
+- **Mergify** ([`.mergify.yml`](.mergify.yml)): Dependabot の PR をコンフリクトが無ければ自動マージし、マージ後にブランチを削除します。
+
+## ライセンス
+[MIT License](LICENSE) の下で公開しています。なお各ドライバ・ソフトウェア本体(`px4_drv` / `recpt1` / `Mirakurun` / `mirakc` / `EPGStation` など)は、それぞれの上流リポジトリのライセンスに従います。
+
 ## メモ / 今後の整理候補
 - `ansible/` の各ロール(`roles/rec_cmd`, `roles/mirakurun`)は、集約済みの `drivers/` / `native-install/` を直接参照します(`playbook_dir` からの相対パス)。旧リポジトリの `git clone` は不要です。なお、チューナードライバ本体(`px4_drv` / `libaribb25` / `recpt1`)のソースは各インストールスクリプト内で上流から `git clone` されます。
 - `.gitignore` は各ディレクトリに残しています。リポジトリ全体を git 管理する際は、ルートに統合した `.gitignore` を用意すると管理しやすくなります。
