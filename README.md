@@ -69,6 +69,6 @@ bash setup.sh
 ## ライセンス
 [MIT License](LICENSE) の下で公開しています。なお各ドライバ・ソフトウェア本体(`px4_drv` / `recpt1` / `Mirakurun` / `mirakc` / `EPGStation` など)は、それぞれの上流リポジトリのライセンスに従います。
 
-## メモ / 今後の整理候補
+## メモ
 - `ansible/` の各ロール(`roles/rec_cmd`, `roles/mirakurun`)は、集約済みの `drivers/` / `native-install/` を直接参照します(`playbook_dir` からの相対パス)。旧リポジトリの `git clone` は不要です。なお、チューナードライバ本体(`px4_drv` / `libaribb25` / `recpt1`)のソースは各インストールスクリプト内で上流から `git clone` されます。
-- `.gitignore` は各ディレクトリに残しています。リポジトリ全体を git 管理する際は、ルートに統合した `.gitignore` を用意すると管理しやすくなります。
+- `.gitignore` は各ディレクトリに個別のものを残しつつ、ルートにも共通パターンを集約した `.gitignore` を用意しています。
