@@ -1,4 +1,4 @@
-# docker (mirack-epgstation-px4)
+# docker (mirakc-epgstation-px-x1ud)
 
 mirakc + EPGStation + MySQL を Docker で構築する方式です。
 ホスト側にはチューナードライバのみ必要で、Mirakurun/EPGStation 本体はコンテナで動作します。

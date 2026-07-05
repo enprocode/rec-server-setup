@@ -11,7 +11,7 @@
 | [`drivers/`](drivers/) | rec-cmd-install | チューナードライバ・録画コマンド (px4_drv / recpt1 / libaribb25) のインストール(全方式共通) | [docs/drivers.md](docs/drivers.md) |
 | [`native-install/`](native-install/) | mirakurun-epgstation-install | Mirakurun + EPGStation をネイティブ(直接)インストールするシェルスクリプト & 設定 | [docs/native-install.md](docs/native-install.md) |
 | [`ansible/`](ansible/) | rec-server-script-dev | 上記を Ansible でまとめて自動構築(ネイティブ方式の自動化) | [docs/ansible.md](docs/ansible.md) |
-| [`docker/`](docker/) | mirack-epgstation-px4 | mirakc + EPGStation + MySQL を Docker で構築(Docker方式) | [docs/docker.md](docs/docker.md) |
+| [`docker/`](docker/) | mirakc-epgstation-px-x1ud | mirakc + EPGStation + MySQL を Docker で構築(Docker方式) | [docs/docker.md](docs/docker.md) |
 
 ## 構築方式の選び方
 
