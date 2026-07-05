@@ -3,11 +3,13 @@
 
 ## Usage / 使用方法
 ```(bash)
+$ cd ansible
+
 # Dry-run
 $ sudo ansible-playbook -i hosts rec-ubuntu-provisioning.yml -vvv --check
 
 # Run
-sudo ansible-playbook -i hosts rec-ubuntu-provisioning.yml -vvv
+$ sudo ansible-playbook -i hosts rec-ubuntu-provisioning.yml -vvv
 ```
 
 ## コードについて
@@ -19,7 +21,7 @@ sudo ansible-playbook -i hosts rec-ubuntu-provisioning.yml -vvv
 | Name | URL |
 | ---- | ---- |
 | px4_drv | https://github.com/nns779/px4_drv |
-| libarib25 | https://github.com/stz2012/libarib25 |
+| libaribb25 | https://github.com/tsukumijima/libaribb25 |
 | recpt1 | https://github.com/stz2012/recpt1 |
 | Mirakurun | https://github.com/Chinachu/Mirakurun |
 | EPGStation | https://github.com/l3tnun/EPGStation |

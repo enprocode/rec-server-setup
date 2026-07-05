@@ -2,10 +2,9 @@
 MirakurunとEPGStationを自動的にインストールできるスクリプト
 
 ## Usage / 使用方法
-ソースダウンロード
+スクリプトのあるディレクトリへ移動(本リポジトリ内)
 ```(bash)
-$ git clone https://github.com/Junch25/mirakurun-epgstation-install.git
-$ cd shell/
+$ cd native-install/shell/
 ```
 
 Mirakurunを自動でインストールと設定スクリプト
