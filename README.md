@@ -1,4 +1,8 @@
-# rec-server
+# rec-server-setup
+
+[![CI](https://github.com/enprocode/rec-server-setup/actions/workflows/ci.yml/badge.svg)](https://github.com/enprocode/rec-server-setup/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/enprocode/rec-server-setup)](https://github.com/enprocode/rec-server-setup/releases)
+[![License: MIT](https://img.shields.io/github/license/enprocode/rec-server-setup)](LICENSE)
 
 録画サーバー(TV録画サーバー)を構築するためのスクリプト・設定を1つに集約したリポジトリです。
 チューナードライバのインストールから Mirakurun / mirakc + EPGStation の構築まで、複数の方式をまとめて管理します。
@@ -15,33 +19,10 @@
 
 ## 構築方式の選び方
 
-録画サーバーの構築には大きく2系統あります。用途に応じて選択してください。
+録画サーバーの構築には大きく2系統あります。用途に応じて選択してください。手順の詳細はいずれも [`docs/`](docs/) を参照してください。
 
-### A. ネイティブ / Ansible 方式
-ホスト上に直接インストールする方式。まず `drivers/` でドライバを入れ、続けて Mirakurun + EPGStation を構築します。
-
-- **手動で構築する場合** … `drivers/` → `native-install/` の順にスクリプトを実行
-- **一括自動構築する場合** … `ansible/` の Playbook を実行(内部で apt / node / mysql / ドライバ / Mirakurun / EPGStation を順に構成)
-
-```bash
-# Ansible による自動構築
-cd ansible
-# Dry-run
-sudo ansible-playbook -i hosts rec-ubuntu-provisioning.yml -vvv --check
-# 実行
-sudo ansible-playbook -i hosts rec-ubuntu-provisioning.yml -vvv
-```
-
-### B. Docker 方式
-mirakc + EPGStation + MySQL をコンテナで構築する方式。ホストにはドライバのみ必要です。
-
-```bash
-# ドライバは drivers/ で先にインストールしておく
-cd docker/setup
-bash setup.sh
-```
-
-各方式の詳細な使い方は [`docs/`](docs/) 配下のドキュメントを参照してください。
+- **A. ネイティブ / Ansible 方式** … ホスト上に直接インストール。手動なら `drivers/` → `native-install/` の順にスクリプトを実行、一括自動構築なら `ansible/` の Playbook を実行します。([docs/drivers.md](docs/drivers.md) / [docs/native-install.md](docs/native-install.md) / [docs/ansible.md](docs/ansible.md))
+- **B. Docker 方式** … mirakc + EPGStation + MySQL をコンテナで構築。ホストにはドライバのみ必要です。([docs/drivers.md](docs/drivers.md) / [docs/docker.md](docs/docker.md))
 
 ## 動作確認環境
 - OS: Ubuntu Server 20.04
@@ -69,6 +50,6 @@ bash setup.sh
 ## ライセンス
 [MIT License](LICENSE) の下で公開しています。なお各ドライバ・ソフトウェア本体(`px4_drv` / `recpt1` / `Mirakurun` / `mirakc` / `EPGStation` など)は、それぞれの上流リポジトリのライセンスに従います。
 
-## メモ / 今後の整理候補
+## メモ
 - `ansible/` の各ロール(`roles/rec_cmd`, `roles/mirakurun`)は、集約済みの `drivers/` / `native-install/` を直接参照します(`playbook_dir` からの相対パス)。旧リポジトリの `git clone` は不要です。なお、チューナードライバ本体(`px4_drv` / `libaribb25` / `recpt1`)のソースは各インストールスクリプト内で上流から `git clone` されます。
-- `.gitignore` は各ディレクトリに残しています。リポジトリ全体を git 管理する際は、ルートに統合した `.gitignore` を用意すると管理しやすくなります。
+- `.gitignore` は各ディレクトリに個別のものを残しつつ、ルートにも共通パターンを集約した `.gitignore` を用意しています。
