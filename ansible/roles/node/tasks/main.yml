@@ -7,7 +7,7 @@
 
 - name: add repository of node.js
   become: true
-  shell: curl -sL https://deb.nodesource.com/setup_16.x | sudo bash -
+  shell: curl -sL https://deb.nodesource.com/setup_20.x | sudo bash -
 
 - name: apt update
   become: true

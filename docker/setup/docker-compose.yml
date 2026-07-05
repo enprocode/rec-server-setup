@@ -1,4 +1,3 @@
-version: '3.8'
 services:
   mirakc:
     # 本リポジトリの Dockerfile からローカルビルドする (公開イメージには依存しない)

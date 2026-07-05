@@ -14,7 +14,9 @@ cd docker/setup
 bash setup.sh
 ```
 
-`setup.sh` は EPGStation の設定を配置し、`docker-compose up -d` でコンテナ群(mirakc / EPGStation / MySQL)を起動します。mirakc イメージは `docker/docker/debian/Dockerfile` から初回にローカルビルドされます(公開イメージには依存しません)。
+`setup.sh` は EPGStation の設定を配置し、`docker compose up -d` でコンテナ群(mirakc / EPGStation / MySQL)を起動します。mirakc イメージは `docker/docker/debian/Dockerfile` から初回にローカルビルドされます(公開イメージには依存しません)。
+
+> **前提**: Docker Compose v2(`docker compose`)が必要です。旧 v1(`docker-compose`)は EOL のため利用しません。
 
 ## 構成
 | ディレクトリ | 内容 |

@@ -4,5 +4,5 @@ set -e
 
 echo "setup start!"
 cp -r ../docker/epgstation .
-docker-compose up -d
+docker compose up -d
 echo "done!"
