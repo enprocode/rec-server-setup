@@ -58,5 +58,5 @@ bash setup.sh
 | EPGStation | https://github.com/l3tnun/EPGStation |
 
 ## メモ / 今後の整理候補
-- `ansible/` の各ロール(`roles/rec_cmd`, `roles/mirakurun`)は、旧リポジトリ (`rec-cmd-install`, `mirakurun-epgstation-install`) を GitHub から `git clone` して呼び出しています。集約後は同リポジトリ内の `drivers/` / `native-install/` を直接参照するよう書き換えると、外部依存を減らせます。
+- `ansible/` の各ロール(`roles/rec_cmd`, `roles/mirakurun`)は、集約済みの `drivers/` / `native-install/` を直接参照します(`playbook_dir` からの相対パス)。旧リポジトリの `git clone` は不要です。なお、チューナードライバ本体(`px4_drv` / `libaribb25` / `recpt1`)のソースは各インストールスクリプト内で上流から `git clone` されます。
 - `.gitignore` は各ディレクトリに残しています。リポジトリ全体を git 管理する際は、ルートに統合した `.gitignore` を用意すると管理しやすくなります。

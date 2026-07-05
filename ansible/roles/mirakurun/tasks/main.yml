@@ -22,10 +22,12 @@
   become: true
   command: mirakurun init
 
-- name: mirakurun setup file download
-  git:
-    repo: https://github.com/Junch25/mirakurun-epgstation-install.git
-    dest: ~/mirakurun-epgstation-install
+# 集約済みの native-install/ を配置する (旧リポジトリの clone は不要)
+# epgstation ロールが参照する conf/ ・ bin/ もここで一緒に配置される
+- name: deploy mirakurun/epgstation setup files
+  copy:
+    src: "{{ playbook_dir }}/../native-install/"
+    dest: ~/mirakurun-epgstation-install/
 
 - name: tuners
   become: true

@@ -7,14 +7,12 @@
     group: root
     mode: 0755
 
-- name: cmd file git clone
-  become: true
-  git:
-    repo: https://github.com/Junch25/rec-cmd-install.git
-    dest: ~/git/rec-cmd-install
-
+# 集約済みの drivers/shell 配下のスクリプトを直接実行する
+# (ドライバのソースは各スクリプト内で上流から clone される)
 - name: install script
   become: true
   shell: |
-    bash ~/git/rec-cmd-install/shell/px4driver-install.sh
-    bash ~/git/rec-cmd-install/shell/recpt1-install.sh
+    bash px4_drv-install.sh
+    bash recpt1-install.sh
+  args:
+    chdir: "{{ playbook_dir }}/../drivers/shell"
