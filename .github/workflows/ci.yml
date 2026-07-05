@@ -17,7 +17,7 @@ jobs:
     name: shellcheck
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Run shellcheck
         run: |
           find drivers native-install docker -name '*.sh' -print0 \
@@ -27,7 +27,7 @@ jobs:
     name: yamllint
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Install yamllint
         run: pipx install yamllint==1.38.0
       - name: Run yamllint
@@ -42,7 +42,7 @@ jobs:
     env:
       ACTIONLINT_VERSION: 1.7.12
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Run actionlint
         run: |
           # 公式リポジトリの導入スクリプトでバージョン固定して取得する
@@ -53,7 +53,7 @@ jobs:
     name: hadolint
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Run hadolint
         uses: hadolint/hadolint-action@v3.1.0
         with:
@@ -64,7 +64,7 @@ jobs:
     name: ansible syntax-check
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Install ansible
         run: pipx install ansible==14.1.0
       - name: Syntax check
