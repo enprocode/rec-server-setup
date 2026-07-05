@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# EPGStation をインストール・初期設定し、pm2 で起動する。
+# 先に mirakurun-install.sh を実行し Mirakurun を用意しておくこと。
+
 echo "EPGStation install and setup start!"
 cd ~/ || exit
 git clone https://github.com/l3tnun/EPGStation.git

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# PX-S1UD / PX-Q1UD 用のファームウェアを /lib/firmware に配置する。
+
 mkdir -p ~/git/driver
 cd ~/git/driver || exit
 echo 'PX-Q1UD Driver install start!'

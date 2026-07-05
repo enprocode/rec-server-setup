@@ -1,7 +1,10 @@
 #!/bin/bash
 
+# PLEX製チューナー(PXW3U4など)の px4_drv ドライバをインストールする。
+# 事前に docs/drivers.md 記載の依存パッケージを導入しておくこと。
+
 echo "PX4 Driver install start!"
-mkdir ~/git
+mkdir -p ~/git
 cd ~/git || exit
 git clone https://github.com/Junch25/px4_drv.git && cd px4_drv/fwtool || exit
 make

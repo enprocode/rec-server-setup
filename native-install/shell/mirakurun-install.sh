@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Mirakurun をインストールし、対話メニューでチューナー設定を選択する。
+# ../conf を参照するため native-install/shell ディレクトリ内で実行すること。
+
 TUNER1="tuners-Q3PE4"
 TUNER2="tuners-W3PE4"
 TUNER3="tuners-15ch"
@@ -21,7 +24,7 @@ function mirakurun_setup() {
             break
         else
             echo "$TUNER"
-            sudo rm /usr/local/etc/mirakurun/tuners.yml
+            sudo rm -f /usr/local/etc/mirakurun/tuners.yml
             sudo cp ../conf/$TUNER.yml /usr/local/etc/mirakurun/
             sudo mv /usr/local/etc/mirakurun/$TUNER.yml /usr/local/etc/mirakurun/tuners.yml
             ls -lah /usr/local/etc/mirakurun/
