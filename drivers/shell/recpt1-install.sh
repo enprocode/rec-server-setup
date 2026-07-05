@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# libaribb25 install
 echo "libaribb25 and recpt1 install start!"
 cd ~/git || exit
 git clone https://github.com/Junch25/libaribb25.git

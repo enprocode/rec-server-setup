@@ -14,7 +14,6 @@ function mirakurun_install() {
     return 0
 }
 
-# Mirakurun setuo
 # 1.Q3PE4 2.W3PE4 3.tuners-15ch
 function mirakurun_setup() {
     select TUNER in "$TUNER1" "$TUNER2" "$TUNER3" "exit"; do
@@ -34,7 +33,6 @@ function mirakurun_setup() {
 }
 
 function epgstation_install() {
-    # EPGStation install
     cd ~/ || exit
     git clone https://github.com/l3tnun/EPGStation.git
     cd EPGStation || exit
@@ -55,13 +53,11 @@ function epgstation_install() {
     return 0
 }
 
-# Mirakurun install
 echo "Mirakurun install and setup start!"
 mirakurun_install
 mirakurun_setup
 echo "Mirakurun install and setup done!"
 
-# EPGStation install
 echo "EPGStation install and setup start!"
 epgstation_install
 echo "EPGStation install and setup done!"

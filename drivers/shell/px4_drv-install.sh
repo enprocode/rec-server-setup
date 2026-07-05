@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# px4 driver install
 echo "PX4 Driver install start!"
 mkdir ~/git
 cd ~/git || exit

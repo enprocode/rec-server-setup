@@ -47,6 +47,5 @@ fi
 
 recpt1 -v
 
-# mirack Start
 echo "mirack Start!"
 /usr/local/bin/mirakc --config /etc/mirakc/config.yml

@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# EPGStation install
 echo "EPGStation install and setup start!"
 cd ~/ || exit
 git clone https://github.com/l3tnun/EPGStation.git

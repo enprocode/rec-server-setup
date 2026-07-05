@@ -14,7 +14,6 @@ function mirakurun_install() {
     return 0
 }
 
-# Mirakurun setuo
 # 1.Q3PE4 2.W3PE4 3.tuners-15ch
 function mirakurun_setup() {
     select TUNER in "$TUNER1" "$TUNER2" "$TUNER3" "exit"; do
@@ -33,7 +32,6 @@ function mirakurun_setup() {
     return 0
 }
 
-# Mirakurun install
 echo "Mirakurun install start!"
 mirakurun_install
 mirakurun_setup
