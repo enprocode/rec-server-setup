@@ -64,7 +64,7 @@ bash setup.sh
 
 ## 開発 / 自動化
 - **Dependabot** ([`.github/dependabot.yml`](.github/dependabot.yml)): GitHub Actions と mirakc 用 Dockerfile のベースイメージを毎週チェックします。
-- **Mergify** ([`.github/mergify.yml`](.github/mergify.yml)): Dependabot の PR をコンフリクトが無ければ自動マージし、マージ後にブランチを削除します。
+- **Mergify** ([`.github/mergify.yml`](.github/mergify.yml)): Dependabot の PR をコンフリクトが無ければ自動マージします。マージ後のブランチ削除は GitHub の「Automatically delete head branches」設定に任せます。
 
 ## ライセンス
 [MIT License](LICENSE) の下で公開しています。なお各ドライバ・ソフトウェア本体(`px4_drv` / `recpt1` / `Mirakurun` / `mirakc` / `EPGStation` など)は、それぞれの上流リポジトリのライセンスに従います。
