@@ -1,7 +1,11 @@
 version: '3.8'
 services:
   mirakc:
-    image: junch25/mirack-epgstation-px4:latest
+    # 本リポジトリの Dockerfile からローカルビルドする (公開イメージには依存しない)
+    build:
+      context: ../docker
+      dockerfile: debian/Dockerfile
+    image: mirakc-px4-debian
     container_name: mirakc
     hostname: mirakc
     init: true
