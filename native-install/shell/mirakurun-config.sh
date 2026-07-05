@@ -24,4 +24,4 @@ select TUNER in "$TUNER1" "$TUNER2" "$TUNER3" "exit"; do
         sudo mirakurun restart
     fi
 done
-echo "Mirakurun install done!"
+echo "Mirakurun setup done!"

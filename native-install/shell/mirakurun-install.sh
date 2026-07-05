@@ -1,41 +1,18 @@
 #!/bin/bash
 
 # Mirakurun をインストールし、対話メニューでチューナー設定を選択する。
+# チューナー選択は運用スクリプト mirakurun-config.sh に一本化している。
 # ../conf を参照するため native-install/shell ディレクトリ内で実行すること。
 
-TUNER1="tuners-Q3PE4"
-TUNER2="tuners-W3PE4"
-TUNER3="tuners-15ch"
-PS3='Select tuners configuration yaml> '
-CURRENT="$HOME/mirakurun-epgstation-install/"
-echo "Dir: $CURRENT"
-
-function mirakurun_install() {
-    sudo npm install arib-b25-stream-test -g --unsafe-perm
-    sudo npm install pm2 -g
-    sudo npm install mirakurun -g --production
-    return 0
-}
-
-# 1.Q3PE4 2.W3PE4 3.tuners-15ch
-function mirakurun_setup() {
-    select TUNER in "$TUNER1" "$TUNER2" "$TUNER3" "exit"; do
-        if [ "$TUNER" = exit ]; then
-            break
-        else
-            echo "$TUNER"
-            sudo rm -f /usr/local/etc/mirakurun/tuners.yml
-            sudo cp ../conf/$TUNER.yml /usr/local/etc/mirakurun/
-            sudo mv /usr/local/etc/mirakurun/$TUNER.yml /usr/local/etc/mirakurun/tuners.yml
-            ls -lah /usr/local/etc/mirakurun/
-            sudo mirakurun init
-            sudo mirakurun restart
-        fi
-    done
-    return 0
-}
+cd "$(dirname "$0")" || exit
 
 echo "Mirakurun install start!"
-mirakurun_install
-mirakurun_setup
+sudo npm install arib-b25-stream-test -g --unsafe-perm
+sudo npm install pm2 -g
+sudo npm install mirakurun -g --production
+sudo mirakurun init
+
+# チューナー設定 (tuners.yml) の選択・反映
+bash mirakurun-config.sh
+
 echo "Mirakurun install done!"
